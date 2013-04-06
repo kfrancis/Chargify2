@@ -1,0 +1,23 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2011/08/nuspec.xsd">
+    <metadata>
+        <id>chargify2</id>
+        <version>1.0.0.0</version>
+        <title>Chargify2</title>
+        <authors>Kori Francis</authors>
+        <owners>Kori Francis</owners>
+        <projectUrl>https://github.com/kfrancis/Chargify2</projectUrl>
+        <iconUrl>http://www.clinicalsupportsystems.com/chargifyDotNET/chargifyDotNet.png</iconUrl>
+        <requireLicenseAcceptance>false</requireLicenseAcceptance>
+        <description>Chargify API V2 .NET Wrapper</description>
+        <copyright>Copyright Kori Francis, 2013</copyright>
+        <tags>Chargify</tags>
+        <dependencies>
+            <dependency id="RestSharp" version="104.1" />
+        </dependencies>
+    </metadata>
+    <files>
+        <file src="app.config.transform" target="content\app.config.transform" />
+        <file src="web.config.transform" target="content\web.config.transform" />
+    </files>
+</package>
