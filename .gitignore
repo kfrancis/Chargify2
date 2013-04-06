@@ -63,7 +63,7 @@ local.properties
 .builds
 *.dotCover
 
-## TODO: If you have NuGet Package Restore enabled, uncomment this
+# Deal with packages
 packages/*
 !packages/repositories.config
 
