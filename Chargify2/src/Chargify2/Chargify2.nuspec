@@ -2,7 +2,7 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2011/08/nuspec.xsd">
     <metadata>
         <id>chargify2</id>
-        <version>1.0.0.0</version>
+        <version>1.0.0.9</version>
         <title>Chargify2</title>
         <authors>Kori Francis</authors>
         <owners>Kori Francis</owners>
@@ -19,5 +19,7 @@
     <files>
         <file src="app.config.transform" target="content\app.config.transform" />
         <file src="web.config.transform" target="content\web.config.transform" />
+        <file src="bin\Debug\Chargify2.dll" target="lib\net45\Chargify2.dll" />
+        <file src="bin\Debug\Chargify2.pdb" target="lib\net45\Chargify2.pdb" />
     </files>
 </package>

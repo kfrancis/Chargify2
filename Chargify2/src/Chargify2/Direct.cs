@@ -22,20 +22,14 @@ namespace Chargify2
         }
 
 
-        public SecureParameters SecureParameters
+        public SecureParameters SecureParameters(Hashtable h)
         {
-            get
-            {
-                return new SecureParameters(new Hashtable(), _client);
-            }
+            return new SecureParameters(h, _client);
         }
 
-        public ResponseParameters ResponseParameters
+        public ResponseParameters ResponseParameters(Hashtable h)
         {
-            get
-            {
-                return new ResponseParameters(new Hashtable(), _client);
-            }
+            return new ResponseParameters(h, _client);
         }
 
         private void ValidateClient()
@@ -50,7 +44,7 @@ namespace Chargify2
         public string api_id { get; set; }
         public string timestamp { get; set; }
         public string nonce { get; set; }
-        public object data { get; set; }
+        public Hashtable data { get; set; }
         public string secret { get; private set; }
 
         public SecureParameters(Hashtable hash, Client client)
@@ -60,7 +54,8 @@ namespace Chargify2
 
             timestamp = (string)hash["timestamp"];
             nonce = (string)hash["nonce"];
-            data = (string)hash["data"];
+
+            data = hash;
 
             ValidateArgs();
         }
@@ -80,7 +75,10 @@ namespace Chargify2
         {
             get
             {
-                return ((Hashtable)data).ToQueryString();
+                Hashtable h = data;
+                if (h.ContainsKey("timestamp")) h.Remove("timestamp");
+                if (h.ContainsKey("nonce")) h.Remove("nonce");
+                return h.ToQueryString();
             }
         }
 
@@ -95,12 +93,12 @@ namespace Chargify2
 
         public void ValidateArgs()
         {
-            if (data != null && data.GetType() != typeof(Hashtable))
+            if (data == null)
             {
-                throw new ArgumentException("data", string.Format("The 'data' provided must be provideed as a Hash (you passed a {0})", data.GetType().Name));
+                throw new ArgumentException("data", "The 'data' provided must be provideed as a Hash");
             }
 
-            if (string.IsNullOrWhiteSpace(api_id) || !string.IsNullOrWhiteSpace(secret))
+            if (string.IsNullOrWhiteSpace(api_id) || string.IsNullOrWhiteSpace(secret))
             {
                 throw new ArgumentException("SecureParameters requires connection to a Client - was one given?");
             }
@@ -158,7 +156,7 @@ namespace Chargify2
 
         public void ValidateArgs()
         {
-            if (string.IsNullOrWhiteSpace(api_id) || !string.IsNullOrWhiteSpace(secret))
+            if (string.IsNullOrWhiteSpace(api_id) || string.IsNullOrWhiteSpace(secret))
             {
                 throw new ArgumentException("ResponseParameters requires connection to a Client - was one given?");
             }
