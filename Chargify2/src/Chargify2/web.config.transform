@@ -1,11 +1,11 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <configuration>
   <configSections>
-    <section name="chargify" type="Chargify2.Configuration.ChargifyAccountRetrieverSection"/>
+    <section name="chargify2" type="Chargify2.Configuration.ChargifyAccountRetrieverSection"/>
   </configSections>
-  <chargify defaultAccount="YourAccount">
+  <chargify2 defaultAccount="YourAccount">
     <accounts>
       <add name="YourAccount" apiKey="apikey_here" apiPassword="password_here" secret="secret_here" />
     </accounts>
-  </chargify>
+  </chargify2>
 </configuration>
