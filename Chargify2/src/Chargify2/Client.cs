@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -25,10 +26,8 @@ namespace Chargify2
         }
 
         public Client(ChargifyAccountElement config)
+            : this(config.ApiKey, config.ApiPassword, config.Secret)
         {
-            _apiKey = config.ApiKey;
-            _apiPassword = config.ApiPassword;
-            _apiSecret = config.Secret;
         }
 
         private string _userAgent;
