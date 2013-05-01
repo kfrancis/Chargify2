@@ -42,7 +42,7 @@ namespace Chargify2.Model
     {
         public Product product { get; set; }
         public PaymentProfile payment_profile { get; set; }
-        public Dictionary<string, string> components { get; set; }
+        public Dictionary<string, object> components { get; set; }
         public Customer customer { get; set; }
     }
 
@@ -71,73 +71,73 @@ namespace Chargify2.Model
 
     public class Subscription
     {
-        public string updated_at { get; set; }
+        public DateTime? updated_at { get; set; }
         public int signup_payment_id { get; set; }
         public int customer_id { get; set; }
-        public object expires_at { get; set; }
+        public DateTime? expires_at { get; set; }
         public bool cancel_at_end_of_period { get; set; }
-        public object activated_at { get; set; }
-        public string trial_started_at { get; set; }
+        public DateTime? activated_at { get; set; }
+        public DateTime? trial_started_at { get; set; }
         public int balance_in_cents { get; set; }
         public string previous_state { get; set; }
-        public string current_period_ends_at { get; set; }
+        public DateTime? current_period_ends_at { get; set; }
         public object cancellation_message { get; set; }
         public int payment_profile_id { get; set; }
-        public object delayed_cancel_at { get; set; }
+        public DateTime? delayed_cancel_at { get; set; }
         public string state { get; set; }
-        public string trial_ended_at { get; set; }
-        public string next_assessment_at { get; set; }
-        public string created_at { get; set; }
+        public DateTime? trial_ended_at { get; set; }
+        public DateTime? next_assessment_at { get; set; }
+        public DateTime? created_at { get; set; }
         public int id { get; set; }
-        public object canceled_at { get; set; }
+        public DateTime? canceled_at { get; set; }
         public int product_id { get; set; }
         public string signup_revenue { get; set; }
-        public string current_period_started_at { get; set; }
+        public DateTime? current_period_started_at { get; set; }
     }
 
     public class Product2
     {
-        public string updated_at { get; set; }
+        public DateTime? updated_at { get; set; }
         public string name { get; set; }
         public string trial_interval_unit { get; set; }
         public string description { get; set; }
         public object expiration_interval { get; set; }
         public int product_family_id { get; set; }
         public string handle { get; set; }
-        public object archived_at { get; set; }
+        public DateTime? archived_at { get; set; }
         public string return_params { get; set; }
-        public object initial_charge_in_cents { get; set; }
+        public int? initial_charge_in_cents { get; set; }
         public string accounting_code { get; set; }
         public string interval_unit { get; set; }
-        public string created_at { get; set; }
+        public DateTime? created_at { get; set; }
         public int id { get; set; }
         public string return_url { get; set; }
-        public int trial_interval { get; set; }
+        public int? trial_interval { get; set; }
         public bool require_credit_card { get; set; }
         public bool request_credit_card { get; set; }
         public string expiration_interval_unit { get; set; }
         public int interval { get; set; }
         public int price_in_cents { get; set; }
-        public int trial_price_in_cents { get; set; }
+        public int? trial_price_in_cents { get; set; }
     }
 
     public class PaymentProfile2
     {
-        public string updated_at { get; set; }
+        public DateTime? updated_at { get; set; }
         public string current_vault { get; set; }
         public int expiration_month { get; set; }
         public string billing_city { get; set; }
-        public object customer_vault_token { get; set; }
+        public string customer_vault_token { get; set; }
         public int customer_id { get; set; }
         public string vault_token { get; set; }
         public string first_name { get; set; }
-        public object billing_address_2 { get; set; }
+        public string billing_address_2 { get; set; }
         public string billing_country { get; set; }
         public string billing_state { get; set; }
         public string card_type { get; set; }
         public string billing_address { get; set; }
         public string last_name { get; set; }
-        public string created_at { get; set; }
+        public DateTime? created_at { get; set; }
         public int id { get; set; }
         public string billing_zip { get; set; }
         public string masked_card_number { get; set; }
@@ -171,19 +171,19 @@ namespace Chargify2.Model
     {
         public string organization { get; set; }
         public string updated_at { get; set; }
-        public object address_2 { get; set; }
-        public object address { get; set; }
+        public string address_2 { get; set; }
+        public string address { get; set; }
         public string email { get; set; }
-        public object city { get; set; }
+        public string city { get; set; }
         public string first_name { get; set; }
-        public object country { get; set; }
-        public object state { get; set; }
+        public string country { get; set; }
+        public string state { get; set; }
         public string last_name { get; set; }
-        public string created_at { get; set; }
-        public object phone { get; set; }
+        public DateTime? created_at { get; set; }
+        public string phone { get; set; }
         public int id { get; set; }
-        public object reference { get; set; }
-        public object zip { get; set; }
+        public string reference { get; set; }
+        public string zip { get; set; }
     }
 
     public class Signup2

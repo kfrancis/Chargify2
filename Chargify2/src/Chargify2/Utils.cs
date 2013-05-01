@@ -6,6 +6,7 @@ using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
 using Chargify2.Model;
+using Newtonsoft.Json.Linq;
 using RestSharp;
 
 namespace Chargify2
@@ -48,7 +49,7 @@ namespace Chargify2
             request.Resource = "calls/{call_id}";
             request.RootElement = "call";
             request.AddParameter("call_id", call_id, ParameterType.UrlSegment);
-            return client.Execute<Call>(request);
+            return client.Execute<JObject>(request)["call"].ToObject<Call>();
         }
     }
 }

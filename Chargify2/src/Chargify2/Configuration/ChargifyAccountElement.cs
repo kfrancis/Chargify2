@@ -31,7 +31,9 @@
 namespace Chargify2.Configuration
 {
     #region Imports
+    using System;
     using System.Configuration;
+
     #endregion
 
     /// <summary>
@@ -77,6 +79,16 @@ namespace Chargify2.Configuration
         {
             get { return (string)this["secret"]; }
             set { this["secret"] = value; }
+        }
+
+        /// <summary>
+        /// A proxy, if required.
+        /// </summary>
+        [ConfigurationProperty("proxy", IsRequired = false)]
+        public Uri Proxy
+        {
+            get { return (Uri)this["proxy"]; }
+            set { this["proxy"] = value; }
         }
     }
 }
