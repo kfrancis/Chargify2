@@ -13,13 +13,8 @@
         <copyright>Copyright Kori Francis, 2013</copyright>
         <tags>Chargify</tags>
         <dependencies>
+            <dependency id="Newtonsoft.Json" version="5.0.5" />
             <dependency id="RestSharp" version="104.1" />
         </dependencies>
     </metadata>
-    <files>
-        <file src="app.config.transform" target="content\app.config.transform" />
-        <file src="web.config.transform" target="content\web.config.transform" />
-        <file src="bin\Debug\Chargify2.dll" target="lib\net45\Chargify2.dll" />
-        <file src="bin\Debug\Chargify2.pdb" target="lib\net45\Chargify2.pdb" />
-    </files>
 </package>
