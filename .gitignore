@@ -131,6 +131,7 @@ publish/
 *.pubxml
 
 # NuGet Packages
+packages
 packages/*
 *.nupkg
 !packages/repositories.config
