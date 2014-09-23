@@ -72,11 +72,12 @@ namespace Chargify2
         public string ToFormInputs()
         {
             var sb = new StringBuilder();
-            sb.Append(string.Format("<input type='hidden' name='secure[api_id]' value='{0}'/>", api_id));
-            sb.Append(string.Format("<input type='hidden' name='secure[timestamp]' value='{0}'/>", timestamp));
-            sb.Append(string.Format("<input type='hidden' name='secure[nonce]' value='{0}'/>", nonce));
-            sb.Append(string.Format("<input type='hidden' name='secure[data]' value='{0}'/>", EncodedData));
-            sb.Append(string.Format("<input type='hidden' name='secure[signature]' value='{0}'/>", Signature));
+            sb.AppendLine();
+            sb.AppendLine(string.Format("<input type='hidden' name='secure[api_id]' value='{0}'/>", api_id));
+            sb.AppendLine(string.Format("<input type='hidden' name='secure[timestamp]' value='{0}'/>", timestamp));
+            sb.AppendLine(string.Format("<input type='hidden' name='secure[nonce]' value='{0}'/>", nonce));
+            sb.AppendLine(string.Format("<input type='hidden' name='secure[data]' value='{0}'/>", EncodedData));
+            sb.AppendLine(string.Format("<input type='hidden' name='secure[signature]' value='{0}'/>", Signature));
             return sb.ToString();
         }
 
