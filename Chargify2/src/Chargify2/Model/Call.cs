@@ -213,13 +213,31 @@ namespace Chargify2.Model
         public Result result { get; set; }
         public Signup2 signup { get; set; }
         public Meta meta { get; set; }
+        public Object @object { get; set; }
+    }
+
+    public class ResourceError
+    {
+        public string attribute { get; set; }
+        public string kind { get; set; }
+        public string message { get; set; }
+    }
+
+    public class Table
+    {
+        public List<ResourceError> resource_errors { get; set; }
+    }
+
+    public class Object
+    {
+        public Table table { get; set; }
     }
 
     public class Call
     {
         public string api_id { get; set; }
         public int? timestamp { get; set; }
-        public bool success { get; set; }
+        public bool? success { get; set; }
         public Request request { get; set; }
         public Response response { get; set; }
         public string nonce { get; set; }

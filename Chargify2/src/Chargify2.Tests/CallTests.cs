@@ -10,7 +10,7 @@ namespace Chargify2.Tests
         public void Can_Retrieve_Call()
         {
             // Arrange
-            string knownCallId = "50306403dc8d3da45a406d2c3167365292fef445";
+            string knownCallId = "<call id>";
             var client = GetClient();
 
             // Act
@@ -23,7 +23,7 @@ namespace Chargify2.Tests
 
         private Client GetClient()
         {
-            var client = new Client("5caeb840-80b1-0130-018d-0265669c19df", "6ZIE3odwU7HXFcwidhKS", "Foc_FSMEm-1IyQ0nev5h");
+            var client = new Client("<api key>", "<api_password>", "<api secret>");
             return client;
         }
     }
