@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Newtonsoft.Json;
 
 namespace Chargify2.Model
 {
@@ -208,12 +209,19 @@ namespace Chargify2.Model
         public List<Error> errors { get; set; }
     }
 
+    public class SubscriptionCardUpdater
+    {
+        public PaymentProfile2 payment_profile { get; set; }
+    }
+
     public class Response
     {
         public Result result { get; set; }
         public Signup2 signup { get; set; }
         public Meta meta { get; set; }
+        [JsonProperty("object")]
         public Object @object { get; set; }
+        public SubscriptionCardUpdater subscriptioncardupdater { get; set; }
     }
 
     public class ResourceError
