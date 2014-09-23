@@ -47,6 +47,11 @@ namespace Chargify2
         public Hashtable data { get; set; }
         public string secret { get; private set; }
 
+        /// <summary>
+        /// Constructor
+        /// </summary>
+        /// <param name="hash">The hash to use when constructing the secure parameter hidden inputs</param>
+        /// <param name="client">The client</param>
         public SecureParameters(Hashtable hash, Client client)
         {
             api_id = client.ApiKey;
@@ -75,6 +80,9 @@ namespace Chargify2
             return sb.ToString();
         }
 
+        /// <summary>
+        /// The information that should be included in the secure[data] field
+        /// </summary>
         public string EncodedData
         {
             get
@@ -86,6 +94,9 @@ namespace Chargify2
             }
         }
 
+        /// <summary>
+        /// The signature, as calculated by the formula listed in the documentation
+        /// </summary>
         private string Signature
         {
             get
@@ -138,6 +149,9 @@ namespace Chargify2
             ValidateArgs();
         }
 
+        /// <summary>
+        /// Was this successful?
+        /// </summary>
         public bool isSuccess
         {
             get 
