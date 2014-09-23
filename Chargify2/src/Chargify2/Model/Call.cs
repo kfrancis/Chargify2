@@ -29,6 +29,7 @@ namespace Chargify2.Model
         public string billing_zip { get; set; }
         public string card_number { get; set; }
         public string expiration_year { get; set; }
+        public string cvv { get; set; }
     }
 
     public class Customer
@@ -61,6 +62,8 @@ namespace Chargify2.Model
     {
         public Signup signup { get; set; }
         public Secure secure { get; set; }
+        public PaymentProfile payment_profile { get; set; }
+        public string id { get; set; }
     }
 
     public class Result
