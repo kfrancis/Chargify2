@@ -60,6 +60,10 @@ namespace Chargify2
             ValidateArgs();
         }
 
+        /// <summary>
+        /// Converts the hash to a set of hidden inputs
+        /// </summary>
+        /// <returns></returns>
         public string ToFormInputs()
         {
             var sb = new StringBuilder();
