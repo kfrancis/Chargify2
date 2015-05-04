@@ -95,7 +95,7 @@ namespace Chargify2
         public T Execute<T>(RestRequest request) where T : new()
         {
             var client = new RestClient();
-            client.BaseUrl = BaseUrl;
+            client.BaseUrl = new Uri(BaseUrl);
             client.Authenticator = new HttpBasicAuthenticator(this._apiKey, this._apiPassword);
             client.AddHandler("application/json", new DynamicJsonDeserializer());
             client.UserAgent = UserAgent;
