@@ -1,7 +1,6 @@
 using System;
-using System.Net;
-using Chargify2.Configuration;
-using RestSharp;
+using System.Threading.Tasks;
+using Chargify2.Model;
 
 namespace Chargify2
 {
@@ -34,5 +33,23 @@ namespace Chargify2
         /// The direct endpoint class
         /// </summary>
         Direct Direct { get; }
+
+        #region Calls
+
+        /// <summary>
+        /// Read the call information from Chargify
+        /// </summary>
+        /// <param name="call_id"></param>
+        /// <returns>The call information</returns>
+        Call ReadCall(string call_id);
+
+        /// <summary>
+        /// Read the call information from Chargify
+        /// </summary>
+        /// <param name="call_id"></param>
+        /// <returns>The call information</returns>
+        Task<Call> ReadCallAsync(string call_id);
+
+        #endregion
     }
 }

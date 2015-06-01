@@ -52,7 +52,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Client.Async.cs" />
     <Compile Include="Client.cs" />
+    <Compile Include="Client.Sync.cs" />
     <Compile Include="Configuration\ChargifyAccountElement.cs" />
     <Compile Include="Configuration\ChargifyAccountElementCollection.cs" />
     <Compile Include="Configuration\ChargifyAccountRetrieverSection.cs" />
