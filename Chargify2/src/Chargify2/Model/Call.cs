@@ -242,26 +242,63 @@ namespace Chargify2.Model
         public Table table { get; set; }
     }
 
+    /// <summary>
+    /// A "call" is a complete record of any call to Chargify Direct, which is both returned during the call 
+    /// as well as being able to be retrieved after the fact for verification purposes.
+    /// </summary>
     public class Call
     {
+        /// <summary>
+        /// The API ID associated with this call
+        /// </summary>
         public string api_id { get; set; }
+
+        /// <summary>
+        /// The timestamp of this call. Should match the submitted secure parameter (request -> secure -> timestamp)
+        /// </summary>
         public int? timestamp { get; set; }
+
+        /// <summary>
+        /// Was the call successful? (ie. was the response -> status_code 200?)
+        /// </summary>
         public bool? success { get; set; }
+
+        /// <summary>
+        /// Details about the request submitted to the v2 endpoint
+        /// </summary>
         public Request request { get; set; }
+
+        /// <summary>
+        /// Details the response to the call made to the v2 endpoint
+        /// </summary>
         public Response response { get; set; }
+
+        /// <summary>
+        /// The nonce (if used). Should match the submitted secure parameter (request -> secure -> timestamp)
+        /// </summary>
         public string nonce { get; set; }
+
+        /// <summary>
+        /// The ID of the call
+        /// </summary>
         public string id { get; set; }
 
+        /// <summary>
+        /// Was the call successful? (ie. was the response -> status_code 200?)
+        /// </summary>
         public bool isSuccessful
         {
-            get { return this.response.result.status_code == "200"; }
+            get { return response.result.status_code == "200"; }
         }
 
+        /// <summary>
+        /// The list of errors being returned as part of the response (ie, why did the call fail?)
+        /// </summary>
         public List<Error> Errors
         {
             get
             {
-                return response.result.errors;
+                return response != null ? response.result != null ? response.result.errors : new List<Error>() : new List<Error>();
             }
         }
     }

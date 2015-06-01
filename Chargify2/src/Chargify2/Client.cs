@@ -17,14 +17,14 @@ namespace Chargify2
 
         public Client(string apiKey, string apiPassword, string apiSecret, Uri proxy)
         {
-            this._apiKey = apiKey;
-            this._apiPassword = apiPassword;
-            this._apiSecret = apiSecret;
-            this._proxy = proxy;
+            _apiKey = apiKey;
+            _apiPassword = apiPassword;
+            _apiSecret = apiSecret;
+            _proxy = proxy;
         }
 
         public Client(string apiKey, string apiPassword, string apiSecret)
-            :this(apiKey, apiPassword, apiSecret, null)
+            :this(apiKey, apiPassword, apiSecret, proxy: null)
         {
         }
 
@@ -40,7 +40,7 @@ namespace Chargify2
             {
                 if (_userAgent == null)
                 {
-                    _userAgent = String.Format("Chargify2 .NET Client v" + System.Reflection.Assembly.GetExecutingAssembly().GetName().Version.ToString());
+                    _userAgent = string.Format("Chargify2 .NET Client v" + System.Reflection.Assembly.GetExecutingAssembly().GetName().Version.ToString());
                 }
                 return _userAgent;
             }
@@ -50,7 +50,7 @@ namespace Chargify2
         {
             get
             {
-                return this._apiKey;
+                return _apiKey;
             }
         }
 
@@ -58,7 +58,7 @@ namespace Chargify2
         {
             get
             {
-                return this._apiPassword;
+                return _apiPassword;
             }
         }
 
@@ -66,7 +66,7 @@ namespace Chargify2
         {
             get
             {
-                return this._apiSecret;
+                return _apiSecret;
             }
         }
 
@@ -74,7 +74,7 @@ namespace Chargify2
         {
             get
             {
-                return this._proxy;
+                return _proxy;
             }
         }
 

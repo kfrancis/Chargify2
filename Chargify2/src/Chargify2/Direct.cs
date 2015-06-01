@@ -21,20 +21,20 @@ namespace Chargify2
         }
 
 
-        public SecureParameters SecureParameters(Hashtable h)
+        public SecureParameters SecureParameters(Hashtable hash)
         {
-            return new SecureParameters(h, _client);
+            return new SecureParameters(hash, _client);
         }
 
         public ResponseParameters ResponseParameters(Hashtable h)
         {
-            return new ResponseParameters(h, _client);
+            return new ResponseParameters(hash, _client);
         }
 
         private void ValidateClient()
         {
             if (_client == null)
-                throw new ArgumentNullException("client", "Direct requires a Client as an argument");
+                throw new ArgumentNullException(message: "Direct requires a Client as an argument", paramName: "client");
         }
     }
 
@@ -72,11 +72,11 @@ namespace Chargify2
         {
             var sb = new StringBuilder();
             sb.AppendLine();
-            sb.AppendLine(string.Format("<input type='hidden' name='secure[api_id]' value='{0}'/>", api_id));
-            sb.AppendLine(string.Format("<input type='hidden' name='secure[timestamp]' value='{0}'/>", timestamp));
-            sb.AppendLine(string.Format("<input type='hidden' name='secure[nonce]' value='{0}'/>", nonce));
-            sb.AppendLine(string.Format("<input type='hidden' name='secure[data]' value='{0}'/>", EncodedData));
-            sb.AppendLine(string.Format("<input type='hidden' name='secure[signature]' value='{0}'/>", Signature));
+            sb.AppendLine(string.Format(format: "<input type='hidden' name='secure[api_id]' value='{0}'/>", arg0: api_id));
+            sb.AppendLine(string.Format(format: "<input type='hidden' name='secure[timestamp]' value='{0}'/>", arg0: timestamp));
+            sb.AppendLine(string.Format(format: "<input type='hidden' name='secure[nonce]' value='{0}'/>", arg0: nonce));
+            sb.AppendLine(string.Format(format: "<input type='hidden' name='secure[data]' value='{0}'/>", arg0: EncodedData));
+            sb.AppendLine(string.Format(format: "<input type='hidden' name='secure[signature]' value='{0}'/>", arg0: Signature));
             return sb.ToString();
         }
 
@@ -88,8 +88,8 @@ namespace Chargify2
             get
             {
                 Hashtable h = data;
-                if (h.ContainsKey("timestamp")) h.Remove("timestamp");
-                if (h.ContainsKey("nonce")) h.Remove("nonce");
+                if (h.ContainsKey(key: "timestamp")) h.Remove(key: "timestamp");
+                if (h.ContainsKey(key: "nonce")) h.Remove(key: "nonce");
                 return h.ToQueryString();
             }
         }
@@ -110,12 +110,12 @@ namespace Chargify2
         {
             if (data == null)
             {
-                throw new ArgumentException("data", "The 'data' provided must be provideed as a Hash");
+                throw new ArgumentException(message: "The 'data' provided must be provideed as a Hash", paramName: "data");
             }
 
             if (string.IsNullOrWhiteSpace(api_id) || string.IsNullOrWhiteSpace(secret))
             {
-                throw new ArgumentException("SecureParameters requires connection to a Client - was one given?");
+                throw new ArgumentException(message: "SecureParameters requires connection to a Client - was one given?");
             }
         }
     }
