@@ -1,13 +1,8 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
-using System.Linq;
 using System.Security.Cryptography;
 using System.Text;
-using System.Threading.Tasks;
-using Chargify2.Model;
-using Newtonsoft.Json.Linq;
-using RestSharp;
 
 namespace Chargify2
 {
@@ -41,15 +36,6 @@ namespace Chargify2
         {
             foreach (var item in s)
                 yield return f(item);
-        }
-
-        public static Call ReadCall(this Client client, string call_id)
-        {
-            var request = new RestRequest();
-            request.Resource = "calls/{call_id}";
-            request.RootElement = "call";
-            request.AddParameter("call_id", call_id, ParameterType.UrlSegment);
-            return client.Execute<JObject>(request)["call"].ToObject<Call>();
         }
     }
 }
