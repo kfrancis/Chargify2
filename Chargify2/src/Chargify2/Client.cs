@@ -1,20 +1,12 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Configuration;
-using System.Linq;
-using System.Net;
-using System.Text;
-using System.Threading.Tasks;
 using Chargify2.Configuration;
-using Chargify2.Model;
 using Newtonsoft.Json;
-using Newtonsoft.Json.Linq;
 using RestSharp;
 using RestSharp.Deserializers;
 
 namespace Chargify2
 {
-    public class Client : IClient
+    public partial class Client : IClient
     {
         const string BaseUrl = "https://api.chargify.com/api/v2";
 
@@ -86,33 +78,6 @@ namespace Chargify2
             }
         }
 
-        /// <summary>
-        /// Non-dynamic execute
-        /// </summary>
-        /// <typeparam name="T"></typeparam>
-        /// <param name="request"></param>
-        /// <returns></returns>
-        public T Execute<T>(RestRequest request) where T : new()
-        {
-            var client = new RestClient();
-            client.BaseUrl = new Uri(BaseUrl);
-            client.Authenticator = new HttpBasicAuthenticator(this._apiKey, this._apiPassword);
-            client.AddHandler("application/json", new DynamicJsonDeserializer());
-            client.UserAgent = UserAgent;
-            if (this._proxy != null)
-            {
-                client.Proxy = new WebProxy(this._proxy);
-            }
-
-            var response = client.Execute<T>(request);
-
-            if (response.ErrorException != null)
-            {
-                throw response.ErrorException;
-            }
-
-            return response.Data;
-        }
 
         public Direct Direct
         {

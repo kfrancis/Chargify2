@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Threading.Tasks;
+using Chargify2.Model;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace Chargify2.Tests
@@ -14,11 +16,26 @@ namespace Chargify2.Tests
             var client = GetClient();
 
             // Act
-            var callResult = client.ReadCall(knownCallId);
+            var result = client.ReadCall(knownCallId);
 
             // Assert
-            Assert.IsNotNull(callResult);
-            Assert.IsTrue(callResult.id == knownCallId);
+            Assert.IsNotNull(result);
+            Assert.IsInstanceOfType(result, typeof(Call));
+            Assert.AreEqual(knownCallId, result.id);
+        }
+
+        [TestMethod]
+        public async Task Can_Retrieve_Call_Async()
+        {
+            // Arrange
+            string knownCallId = "<call id>";
+            var client = GetClient();
+
+            var result = await client.ReadCallAsync(knownCallId);
+
+            Assert.IsNotNull(result);
+            Assert.IsInstanceOfType(result, typeof(Call));
+            Assert.AreEqual(knownCallId, result.id);
         }
 
         private Client GetClient()
