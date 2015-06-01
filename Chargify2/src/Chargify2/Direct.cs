@@ -26,7 +26,7 @@ namespace Chargify2
             return new SecureParameters(hash, _client);
         }
 
-        public ResponseParameters ResponseParameters(Hashtable h)
+        public ResponseParameters ResponseParameters(Hashtable hash)
         {
             return new ResponseParameters(hash, _client);
         }
