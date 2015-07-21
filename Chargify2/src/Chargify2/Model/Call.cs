@@ -41,6 +41,7 @@ namespace Chargify2.Model
     public class Signup
     {
         public Product product { get; set; }
+        public string coupon_code { get; set; }
         public PaymentProfile payment_profile { get; set; }
         public Dictionary<string, object> components { get; set; }
         public Customer customer { get; set; }
