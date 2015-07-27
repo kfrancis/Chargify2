@@ -10,7 +10,7 @@ Getting Started
 
 Install the nuget:
     
-    Install-Package chargify
+    Install-Package chargify2
 
 Sample Code
 -----------
