@@ -1,5 +1,7 @@
-Chargify API V2 .NET Wrapper
+# Chargify API V2 .NET Wrapper [![Build status](https://ci.appveyor.com/api/projects/status/x937xtx3qwv78kkx/branch/master?svg=true)](https://ci.appveyor.com/project/kfrancis/chargify2/branch/master)
 ============================
+
+* Chargify2: [![NuGet downloads](https://img.shields.io/nuget/dt/chargify2.svg)](http://www.nuget.org/packages/chargify2) [![NuGet version](https://img.shields.io/nuget/v/chargify2.svg)](http://www.nuget.org/packages/chargify2)
 
 This library is meant to be used with the [Chargify Direct API](http://docs.chargify.com/chargify-direct-introduction).
 
