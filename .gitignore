@@ -184,3 +184,4 @@ UpgradeLog*.htm
 
 # Microsoft Fakes
 FakesAssemblies/
+/Chargify2/.vs/config/applicationhost.config
