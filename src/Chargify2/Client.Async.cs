@@ -8,6 +8,9 @@ using RestSharp.Authenticators;
 
 namespace Chargify2
 {
+    /// <summary>
+    /// REST Client Implementation
+    /// </summary>
     public partial class Client
     {
         /// <summary>

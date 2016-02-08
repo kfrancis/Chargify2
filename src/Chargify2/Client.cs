@@ -15,6 +15,13 @@ namespace Chargify2
         readonly string _apiSecret;
         readonly Uri _proxy;
 
+        /// <summary>
+        /// Constructor
+        /// </summary>
+        /// <param name="apiKey">The api key (like username) used for authentication</param>
+        /// <param name="apiPassword">The api password used for authentication</param>
+        /// <param name="apiSecret">The api secret used for encrypting/decrypting important data</param>
+        /// <param name="proxy">The proxy connection to the server</param>
         public Client(string apiKey, string apiPassword, string apiSecret, Uri proxy)
         {
             _apiKey = apiKey;
@@ -23,11 +30,21 @@ namespace Chargify2
             _proxy = proxy;
         }
 
+        /// <summary>
+        /// Constructor
+        /// </summary>
+        /// <param name="apiKey">The api key (like username) used for authentication</param>
+        /// <param name="apiPassword">The api password used for authentication</param>
+        /// <param name="apiSecret">The api secret used for encrypting/decrypting important data</param>
         public Client(string apiKey, string apiPassword, string apiSecret)
             :this(apiKey, apiPassword, apiSecret, proxy: null)
         {
         }
 
+        /// <summary>
+        /// Constructor
+        /// </summary>
+        /// <param name="config">The chargify configuration from web.config/app.config</param>
         public Client(ChargifyAccountElement config)
             : this(config.ApiKey, config.ApiPassword, config.Secret, config.Proxy)
         {
@@ -46,6 +63,9 @@ namespace Chargify2
             }
         }
 
+        /// <summary>
+        /// An application programming interface key (API key) is a code passed in by computer programs calling an API (application programming interface) to identify the calling program, its developer, or its user to the Web site.
+        /// </summary>
         public string ApiKey
         {
             get
@@ -54,6 +74,9 @@ namespace Chargify2
             }
         }
 
+        /// <summary>
+        /// The password related to the ApiKey
+        /// </summary>
         public string ApiPassword
         {
             get
@@ -62,6 +85,10 @@ namespace Chargify2
             }
         }
 
+        /// <summary>
+        /// The Api Secret is another string which is known only to the user and the server and is not publically shared. Generally 
+        /// used to encrypt data that is easily decrypted by the server.
+        /// </summary>
         public string ApiSecret
         {
             get
@@ -70,6 +97,9 @@ namespace Chargify2
             }
         }
 
+        /// <summary>
+        /// The proxy connection to the server
+        /// </summary>
         public Uri Proxy
         {
             get
@@ -79,6 +109,9 @@ namespace Chargify2
         }
 
 
+        /// <summary>
+        /// The Chargify Direct API
+        /// </summary>
         public Direct Direct
         {
             get
@@ -88,7 +121,7 @@ namespace Chargify2
         }
     }
 
-    public class DynamicJsonDeserializer : IDeserializer
+    internal class DynamicJsonDeserializer : IDeserializer
     {
         public string RootElement { get; set; }
         public string Namespace { get; set; }

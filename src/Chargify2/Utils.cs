@@ -6,13 +6,22 @@ using System.Text;
 
 namespace Chargify2
 {
+    /// <summary>
+    /// Extension class
+    /// </summary>
     public static class Utils
     {
+        /// <summary>
+        /// Calculates the signature using the formula given by Chargify
+        /// </summary>
+        /// <param name="message">The message to use in creating the signature</param>
+        /// <param name="secret">The api secret</param>
+        /// <returns>The calculated signature</returns>
         public static string CalculateSignature(this string message, string secret)
         {
-            ASCIIEncoding encoding = new ASCIIEncoding();
+            var encoding = new ASCIIEncoding();
             byte[] keyByte = encoding.GetBytes(secret);
-            HMACSHA1 hmacsha1 = new HMACSHA1(keyByte);
+            var hmacsha1 = new HMACSHA1(keyByte);
             byte[] messageBytes = encoding.GetBytes(message);
             byte[] hashMessage = hmacsha1.ComputeHash(messageBytes);
             string hexaHash = "";
@@ -20,6 +29,11 @@ namespace Chargify2
             return hexaHash;
         }
 
+        /// <summary>
+        /// Toes the query string.
+        /// </summary>
+        /// <param name="hashtable">The hashtable.</param>
+        /// <returns>The query string</returns>
         public static string ToQueryString(this Hashtable hashtable)
         {
             string tmp = "";
@@ -32,6 +46,14 @@ namespace Chargify2
             return tmp;
         }
 
+        /// <summary>
+        /// Maps the specified s.
+        /// </summary>
+        /// <typeparam name="T">The type of the T.</typeparam>
+        /// <typeparam name="U">The type of the U.</typeparam>
+        /// <param name="s">The s.</param>
+        /// <param name="f">The f.</param>
+        /// <returns></returns>
         public static IEnumerable<U> Map<T, U>(this IEnumerable<T> s, Func<T, U> f)
         {
             foreach (var item in s)

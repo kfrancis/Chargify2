@@ -4,6 +4,9 @@ using Chargify2.Model;
 
 namespace Chargify2
 {
+    /// <summary>
+    /// Client
+    /// </summary>
     public interface IClient
     {
         /// <summary>
