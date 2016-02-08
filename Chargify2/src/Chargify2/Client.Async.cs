@@ -4,6 +4,7 @@ using System.Threading.Tasks;
 using Chargify2.Model;
 using Newtonsoft.Json.Linq;
 using RestSharp;
+using RestSharp.Authenticators;
 
 namespace Chargify2
 {
