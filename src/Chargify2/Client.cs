@@ -2,7 +2,7 @@
 using Chargify2.Configuration;
 using Newtonsoft.Json;
 using RestSharp;
-using RestSharp.Deserializers;
+using RestSharp.Serializers;
 
 namespace Chargify2
 {
@@ -127,7 +127,7 @@ namespace Chargify2
         public string Namespace { get; set; }
         public string DateFormat { get; set; }
 
-        public T Deserialize<T>(IRestResponse response)
+        public T Deserialize<T>(RestResponse response)
         {
             return JsonConvert.DeserializeObject<dynamic>(response.Content);
         }
