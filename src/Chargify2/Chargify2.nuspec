@@ -12,9 +12,5 @@
     <description>Chargify API V2 .NET Wrapper</description>
     <copyright>Copyright Kori Francis, 2013</copyright>
     <tags>Chargify</tags>
-    <dependencies>
-      <dependency id="Newtonsoft.Json" version="4.5.5" />
-      <dependency id="RestSharp" version="105.1.0" />
-    </dependencies>
   </metadata>
 </package>
