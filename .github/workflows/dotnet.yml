@@ -28,7 +28,7 @@ jobs:
       run: dotnet restore
 
     - name: Build
-      run: msbuild src\Chargify2\Chargify2.csproj --no-restore /nowarn:CS1591
+      run: msbuild src\Chargify2\Chargify2.csproj
 
     - name: Publish
       run: | # | character makes the "run" property multi-line, so we can put multiple commands in the same step
