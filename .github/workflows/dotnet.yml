@@ -17,8 +17,8 @@ jobs:
       with:
         fetch-depth: 0 # avoid shallow clone so nbgv can do its work.
         
-    - name: Setup MSBuild Path
-      uses: warrenbuckley/Setup-MSBuild@v1
+    - name: Add msbuild to PATH
+      uses: microsoft/setup-msbuild@v1.1
 
     - uses: dotnet/nbgv@master
       with:
@@ -28,7 +28,7 @@ jobs:
       run: dotnet restore
 
     - name: Build
-      run: dotnet build --no-restore /nowarn:CS1591
+      run: msbuild src\Chargify2\Chargify2.csproj --no-restore /nowarn:CS1591
 
     - name: Publish
       run: | # | character makes the "run" property multi-line, so we can put multiple commands in the same step
