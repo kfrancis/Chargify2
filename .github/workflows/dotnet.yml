@@ -9,18 +9,16 @@ on:
 jobs:
   build-test:
     name: Build and Publish
-    runs-on: ubuntu-latest
+    runs-on: windows-latest
 
     steps:
     - name: Checkout Repository
       uses: actions/checkout@v2
       with:
         fetch-depth: 0 # avoid shallow clone so nbgv can do its work.
-
-    - name: Setup .NET
-      uses: actions/setup-dotnet@v1
-      with:
-        dotnet-version: 5.0.x
+        
+    - name: Setup MSBuild Path
+      uses: warrenbuckley/Setup-MSBuild@v1
 
     - uses: dotnet/nbgv@master
       with:
