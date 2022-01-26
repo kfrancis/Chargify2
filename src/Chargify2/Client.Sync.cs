@@ -17,26 +17,21 @@ namespace Chargify2
         /// <returns></returns>
         private T Execute<T>(RestRequest request) where T : new()
         {
-            var client = new RestClient();
-            client.BaseUrl = new Uri(BaseUrl);
-            client.Authenticator = new HttpBasicAuthenticator(_apiKey, _apiPassword);
-            client.AddHandler(contentType: "application/json", deserializer: new DynamicJsonDeserializer());
-            client.UserAgent = UserAgent;
+            var options = new RestClientOptions(BaseUrl)
+            {
+                UserAgent = UserAgent
+            };
             if (_proxy != null)
             {
-                client.Proxy = new WebProxy(this._proxy);
+                options.Proxy = new WebProxy(_proxy);
             }
+            _client = new RestClient(options);
+            _client.UseSerializer(() => _serializer);
+            _client.Authenticator = new HttpBasicAuthenticator(_apiKey, _apiPassword);
 
-            IRestResponse<T> response = client.Execute<T>(request);
-
-            if (response.ErrorException == null)
-            {
-                return response.Data;
-            }
-            else
-            {
-                throw response.ErrorException;
-            }
+            var response = _client.ExecuteAsync<T>(request).GetAwaiter().GetResult();
+            TimeoutCheck(request, response);
+            return response.Data;
         }
 
         /// <summary>
@@ -46,9 +41,11 @@ namespace Chargify2
         /// <returns>The call information</returns>
         public Call ReadCall(string call_id)
         {
-            var request = new RestRequest();
-            request.Resource = "calls/{call_id}";
-            request.RootElement = "call";
+            var request = new RestRequest
+            {
+                Resource = "calls/{call_id}",
+                RootElement = "call"
+            };
             request.AddParameter("call_id", call_id, ParameterType.UrlSegment);
             return this.Execute<JObject>(request)["call"].ToObject<Call>();
         }

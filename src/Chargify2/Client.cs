@@ -1,8 +1,5 @@
-﻿using System;
-using Chargify2.Configuration;
-using Newtonsoft.Json;
-using RestSharp;
-using RestSharp.Serializers;
+﻿using Chargify2.Configuration;
+using System;
 
 namespace Chargify2
 {
@@ -37,7 +34,7 @@ namespace Chargify2
         /// <param name="apiPassword">The api password used for authentication</param>
         /// <param name="apiSecret">The api secret used for encrypting/decrypting important data</param>
         public Client(string apiKey, string apiPassword, string apiSecret)
-            :this(apiKey, apiPassword, apiSecret, proxy: null)
+            : this(apiKey, apiPassword, apiSecret, proxy: null)
         {
         }
 
@@ -118,18 +115,6 @@ namespace Chargify2
             {
                 return new Direct(this);
             }
-        }
-    }
-
-    internal class DynamicJsonDeserializer : IDeserializer
-    {
-        public string RootElement { get; set; }
-        public string Namespace { get; set; }
-        public string DateFormat { get; set; }
-
-        public T Deserialize<T>(RestResponse response)
-        {
-            return JsonConvert.DeserializeObject<dynamic>(response.Content);
         }
     }
 }
