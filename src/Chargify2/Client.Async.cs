@@ -1,12 +1,12 @@
-﻿using Chargify2.Model;
-using Microsoft.Extensions.Logging;
-using RestSharp;
-using RestSharp.Authenticators;
-using RestSharp.Serializers;
 using System;
 using System.Linq;
 using System.Net;
 using System.Threading.Tasks;
+using Chargify2.Model;
+using Microsoft.Extensions.Logging;
+using RestSharp;
+using RestSharp.Authenticators;
+using RestSharp.Serializers;
 
 namespace Chargify2
 {
@@ -61,11 +61,11 @@ namespace Chargify2
         private void LogError(RestRequest request, RestResponse response)
         {
             //Get the values of the parameters passed to the API
-            string parameters = request.QueryParameters();
+            var parameters = request.QueryParameters();
 
-            //Set up the information message with the URL, 
+            //Set up the information message with the URL,
             //the status code, and the parameters.
-            string info = "Request to " + _client.BuildUri(request) + " failed with status code "
+            var info = "Request to " + _client.BuildUri(request) + " failed with status code "
                           + response.StatusCode + ", parameters: "
                           + parameters + ", and content: " + response.Content;
 
@@ -104,6 +104,7 @@ namespace Chargify2
             return response.Data;
         }
     }
+
     public static class RestRequestExtensions
     {
         public static string QueryParameters(this RestRequest request)

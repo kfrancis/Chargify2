@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections;
 using System.Text;
 
@@ -33,7 +33,6 @@ namespace Chargify2
             return message.CalculateSignature(secret);
         }
 
-
         /// <summary>
         /// The secure parameters
         /// </summary>
@@ -65,6 +64,7 @@ namespace Chargify2
     }
 
 #pragma warning disable JustCode_CSharp_TypeFileNameMismatch // Types not matching file names
+
     /// <summary>
     /// The secure parameters used in Chargify Direct (API v2)
     /// </summary>
@@ -75,18 +75,22 @@ namespace Chargify2
         /// The API ID (ie. the API key)
         /// </summary>
         public string api_id { get; set; }
+
         /// <summary>
         /// An optional timestamp (unix ticks since epoch)
         /// </summary>
         public string timestamp { get; set; }
+
         /// <summary>
         /// An optional nonce value
         /// </summary>
         public string nonce { get; set; }
+
         /// <summary>
         /// A set of values to be sent to Chargify
         /// </summary>
         public Hashtable data { get; set; }
+
         /// <summary>
         /// The API secret
         /// </summary>
@@ -133,7 +137,7 @@ namespace Chargify2
         {
             get
             {
-                Hashtable h = data;
+                var h = data;
                 if (h.ContainsKey(key: "timestamp")) h.Remove(key: "timestamp");
                 if (h.ContainsKey(key: "nonce")) h.Remove(key: "nonce");
                 return h.ToQueryString();
@@ -147,7 +151,7 @@ namespace Chargify2
         {
             get
             {
-                string message = api_id + timestamp + nonce + EncodedData;
+                var message = api_id + timestamp + nonce + EncodedData;
                 return Direct.Signature(message, secret);
             }
         }
@@ -170,6 +174,7 @@ namespace Chargify2
     }
 
 #pragma warning disable JustCode_CSharp_TypeFileNameMismatch // Types not matching file names
+
     /// <summary>
     /// Based on the work in the Chargify2 gem (https://github.com/chargify/chargify2)
     /// </summary>
@@ -180,30 +185,37 @@ namespace Chargify2
         /// The API id (ie. The API key)
         /// </summary>
         public string api_id { get; set; }
+
         /// <summary>
         /// The timestamp (unix ticks since epoch)
         /// </summary>
         public string timestamp { get; set; }
+
         /// <summary>
         /// The nonce value
         /// </summary>
         public string nonce { get; set; }
+
         /// <summary>
         /// The status code of the response
         /// </summary>
         public string status_code { get; set; }
+
         /// <summary>
         /// The result code of the response
         /// </summary>
         public string result_code { get; set; }
+
         /// <summary>
         /// The ID of the call that is related to this response (for looking up later)
         /// </summary>
         public string call_id { get; set; }
+
         /// <summary>
         /// The api secret
         /// </summary>
         public string secret { get; private set; }
+
         /// <summary>
         /// The signature of the response
         /// </summary>
@@ -234,7 +246,7 @@ namespace Chargify2
         /// </summary>
         public bool isSuccess
         {
-            get 
+            get
             {
                 return status_code == "200";
             }
@@ -247,7 +259,7 @@ namespace Chargify2
         {
             get
             {
-                string  message = api_id + timestamp + nonce + status_code + result_code + call_id;
+                var message = api_id + timestamp + nonce + status_code + result_code + call_id;
                 return Direct.Signature(message, secret) == signature;
             }
         }

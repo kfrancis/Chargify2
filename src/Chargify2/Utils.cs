@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Security.Cryptography;
@@ -20,12 +20,12 @@ namespace Chargify2
         public static string CalculateSignature(this string message, string secret)
         {
             var encoding = new ASCIIEncoding();
-            byte[] keyByte = encoding.GetBytes(secret);
+            var keyByte = encoding.GetBytes(secret);
             var hmacsha1 = new HMACSHA1(keyByte);
-            byte[] messageBytes = encoding.GetBytes(message);
-            byte[] hashMessage = hmacsha1.ComputeHash(messageBytes);
-            string hexaHash = "";
-            foreach (byte b in hashMessage) { hexaHash += String.Format("{0:x2}", b); }
+            var messageBytes = encoding.GetBytes(message);
+            var hashMessage = hmacsha1.ComputeHash(messageBytes);
+            var hexaHash = "";
+            foreach (var b in hashMessage) { hexaHash += string.Format("{0:x2}", b); }
             return hexaHash;
         }
 
@@ -36,8 +36,8 @@ namespace Chargify2
         /// <returns>The query string</returns>
         public static string ToQueryString(this Hashtable hashtable)
         {
-            string tmp = "";
-            IDictionaryEnumerator myEnumerator = hashtable.GetEnumerator();
+            var tmp = "";
+            var myEnumerator = hashtable.GetEnumerator();
             while (myEnumerator.MoveNext())
             {
                 if (tmp.Length > 0) tmp += "&";

@@ -1,7 +1,7 @@
-﻿using Newtonsoft.Json;
+using System;
+using Newtonsoft.Json;
 using RestSharp;
 using RestSharp.Serializers;
-using System;
 
 namespace Chargify2
 {

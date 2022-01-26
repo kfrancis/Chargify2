@@ -1,11 +1,11 @@
-﻿
 #region License, Terms and Conditions
+
 //
 // ChargifyAccountElementCollection.cs
 //
 // Authors: Kori Francis <twitter.com/djbyter>
 // Copyright (C) 2013 Kori Franics. All rights reserved.
-// 
+//
 //  THIS FILE IS LICENSED UNDER THE MIT LICENSE AS OUTLINED IMMEDIATELY BELOW:
 //
 //  Permission is hereby granted, free of charge, to any person obtaining a
@@ -26,12 +26,15 @@
 //  FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
 //  DEALINGS IN THE SOFTWARE.
 //
+
 #endregion
 
 namespace Chargify2.Configuration
 {
-    #region Imports 
+    #region Imports
+
     using System.Configuration;
+
     #endregion
 
     /// <summary>
@@ -42,7 +45,7 @@ namespace Chargify2.Configuration
     {
         /// <summary>
         /// Create a new configuration element of type ChargifyAccountElement
-        /// </summary>        
+        /// </summary>
         protected override ConfigurationElement CreateNewElement()
         {
             return new ChargifyAccountElement();

@@ -1,16 +1,16 @@
-﻿using Chargify2.Configuration;
 using System;
+using Chargify2.Configuration;
 
 namespace Chargify2
 {
     public partial class Client : IClient
     {
-        const string BaseUrl = "https://api.chargify.com/api/v2";
+        private const string BaseUrl = "https://api.chargify.com/api/v2";
 
-        readonly string _apiKey;
-        readonly string _apiPassword;
-        readonly string _apiSecret;
-        readonly Uri _proxy;
+        private readonly string _apiKey;
+        private readonly string _apiPassword;
+        private readonly string _apiSecret;
+        private readonly Uri _proxy;
 
         /// <summary>
         /// Constructor
@@ -48,6 +48,7 @@ namespace Chargify2
         }
 
         private string _userAgent;
+
         private string UserAgent
         {
             get
@@ -83,7 +84,7 @@ namespace Chargify2
         }
 
         /// <summary>
-        /// The Api Secret is another string which is known only to the user and the server and is not publically shared. Generally 
+        /// The Api Secret is another string which is known only to the user and the server and is not publically shared. Generally
         /// used to encrypt data that is easily decrypted by the server.
         /// </summary>
         public string ApiSecret
@@ -104,7 +105,6 @@ namespace Chargify2
                 return _proxy;
             }
         }
-
 
         /// <summary>
         /// The Chargify Direct API

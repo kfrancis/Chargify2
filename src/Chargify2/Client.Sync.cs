@@ -1,4 +1,3 @@
-﻿using System;
 using System.Net;
 using Chargify2.Model;
 using Newtonsoft.Json.Linq;

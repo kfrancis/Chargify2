@@ -186,3 +186,5 @@ UpgradeLog*.htm
 FakesAssemblies/
 /Chargify2/.vs/config/applicationhost.config
 /.vs/config/applicationhost.config
+.vs/Chargify2/v17/.futdcache.v1
+.vs/Chargify2/DesignTimeBuild/.dtbcache.v2

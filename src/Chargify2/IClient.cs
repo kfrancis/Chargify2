@@ -53,6 +53,6 @@ namespace Chargify2
         /// <returns>The call information</returns>
         Task<Call> ReadCallAsync(string call_id);
 
-        #endregion
+        #endregion Calls
     }
 }
