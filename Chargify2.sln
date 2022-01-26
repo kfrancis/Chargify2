@@ -1,15 +1,16 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 14
-VisualStudioVersion = 14.0.24720.0
+# Visual Studio Version 17
+VisualStudioVersion = 17.0.32112.339
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Chargify2", "src\Chargify2\Chargify2.csproj", "{4167E35C-CA3A-421B-B415-B351C2D266C1}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Chargify2", "src\Chargify2\Chargify2.csproj", "{4167E35C-CA3A-421B-B415-B351C2D266C1}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Chargify2.Tests", "src\Chargify2.Tests\Chargify2.Tests.csproj", "{71659673-CDD2-4F6A-9F95-475AD4AECE15}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{89497403-5D7C-4DEA-A0EA-993426ED23A0}"
 	ProjectSection(SolutionItems) = preProject
 		.gitignore = .gitignore
+		.github\workflows\dotnet.yml = .github\workflows\dotnet.yml
 		.nuget\NuGet.Config = .nuget\NuGet.Config
 		README.md = README.md
 	EndProjectSection
@@ -31,5 +32,8 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {E9D45ECD-74BD-4410-8234-72BABBB782A1}
 	EndGlobalSection
 EndGlobal
